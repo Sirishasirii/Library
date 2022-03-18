@@ -1,0 +1,114 @@
+<div>
+    <h1 class="myH1">LIBRARY BOOKS</h1>
+    </div>
+    <div class="container">
+    <h2 class="myH2">Add new Book detail module</h2>
+    <div class="form-div">
+        <form [formGroup]="myForm" (ngSubmit)="mySubmit()">
+            <table class="myTable">
+                <tr>
+                    <div>
+    <td><label for="bookName">Book name</label></td>
+    <td><input
+    placeholder="Enter book name"
+    name="bookName"
+    id="bookName"
+    formControlName="name"
+    [(ngModel)]="book.bookName">
+    <div *ngIf="name!.invalid && (name!.dirty || name!.touched)">
+    Name is required
+</div>     
+</td>
+</div>
+</tr>
+<tr>
+<div>
+    <td><label for="bookAuthor">Book author</label></td>
+    <td><input type="text"
+    placeholder="Enter book author"
+    name="bookAuthor"
+    id="bookAuthor"
+    formControlName="author"
+    [(ngModel)]="book.author">
+    <div *ngIf="author!.invalid && (author!.dirty || author!.touched)">
+    Author is required
+    </div>
+    </td>
+    </div>
+    </tr>
+    <tr>
+    <div>
+    <td><label for="bookLiterature">Book literature</label></td>
+    <td><input type="text"
+    placeholder="Enter book literature"
+    name="bookLiterature"
+    id="bookLiterature"
+    formControlName="literature"
+    [(ngModel)]="book.literature">
+    <div *ngIf="literature!.invalid && (literature!.dirty || literature!.touched)">
+        <div *ngIf="literature!.errors!['required']">
+            Literature is required
+        </div>
+
+    </div>
+    </td>
+    </div>
+    </tr>
+    <tr>
+        <div>
+            <td><label for="dor">Date of return</label></td>
+            <td><input type="date"
+                    name="bookDor"
+                    id="bookDor"
+                    formControlName="dor"
+                    [(ngModel)]="book.dor">
+                    <div *ngIf="dor!.invalid && (dor!.dirty || dor!.touched)">
+                        Date of return is required
+                    </div>
+            </td>
+        </div>
+    </tr>
+
+    
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <div>
+            <td>
+                <label for="confirm">Confirm</label>
+            </td>
+            <td>
+                <input type="checkbox"
+                id="confirm"
+                name="confirm"
+                required
+                (click)="toggleConfirmed()"
+                [(ngModel)]="isConfirmed">
+            </td>
+        </div>        
+    </tr>
+    <tr>
+        <div class="myCenter">
+            <div *ngIf="isConfirmed">
+                <td>
+                    <button mat-raised-button color="primary" type="submit">Submit</button>
+                </td>
+                <td>
+                    <button mat-raised-button color="warn" type="reset">Clear</button>
+                </td>
+            </div>
+        </div>
+    </tr>
+</table>
+</form>    
+</div>
+<br>
+
+<div class="myMain">
+    <a mat-stroked-button routerLink="/books/home">Home</a>
+</div>
+<div *ngIf="msg">
+    {{msg}}
+</div>
+</div>
